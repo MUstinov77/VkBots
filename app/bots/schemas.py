@@ -1,4 +1,5 @@
 from datetime import datetime
+from uuid import uuid4, UUID
 
 from pydantic import BaseModel
 
@@ -13,5 +14,6 @@ class BotRequest(BaseModel):
 
 class BotResponse(BotRequest):
 
-    id: int
+    id: UUID
+    created_at: datetime
     locktime: datetime | None = None

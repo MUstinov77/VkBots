@@ -1,4 +1,5 @@
 from typing import Annotated
+from uuid import UUID
 
 from fastapi import Depends
 from sqlalchemy import select
@@ -16,7 +17,7 @@ def get_bots_from_db(
     return result
 
 def get_bot_by_id(
-        bot_id: int,
+        bot_id: UUID,
         session: Annotated[Session, Depends(session_provider)],
 ):
     query = select(Bot).where(Bot.id == bot_id)

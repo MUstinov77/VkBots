@@ -1,0 +1,49 @@
+import pytest
+
+from fastapi.testclient import TestClient
+from app.core.utils.lifespan import init_db, drop_db
+from app.main import app
+
+
+
+@pytest.fixture
+def lifespan():
+    init_db()
+    yield
+    drop_db()
+
+@pytest.fixture
+def client():
+    return TestClient(app)
+
+@pytest.fixture(autouse=True)
+def test_user_data():
+    return {
+        "username": "ajax",
+        "password": "123"
+    }
+
+@pytest.fixture
+def create_user(
+    lifespan,
+    client,
+    test_user_data
+):
+    response = client.post(
+        "/auth/signup",
+        json=test_user_data
+    )
+    return response.json()
+
+@pytest.fixture
+def get_user_access_token(
+    client,
+    create_user,
+    test_user_data,
+):
+    response = client.post(
+        "/auth/login",
+        data=test_user_data
+    )
+    return response.json().get("access_token")
+

@@ -42,6 +42,7 @@ async def signup(
 
 @auth_router.post(
     "/login",
+    response_model=Token,
     responses={
         status.HTTP_400_BAD_REQUEST: {"description": "Invalid credentials"}
     }

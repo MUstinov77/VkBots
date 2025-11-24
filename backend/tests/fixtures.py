@@ -1,16 +1,22 @@
 import pytest
 from fastapi.testclient import TestClient
+from sqlalchemy import create_engine
 
-from backend.app.core.utils.lifespan import drop_db, engine, init_db
+from backend.app.core.db.models import Base
 from backend.app.main import app
 
 
+@pytest.fixture()
+def engine():
+    return create_engine(
+    "sqlite:///bots.db",
+    )
+
 @pytest.fixture
-def lifespan():
-    init_db()
+def lifespan(engine):
+    Base.metadata.create_all(engine)
     yield
-    drop_db()
-    engine.dispose()
+
 
 @pytest.fixture
 def client():

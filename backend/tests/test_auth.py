@@ -3,25 +3,12 @@ from fastapi.testclient import TestClient
 from backend.app.api.auth.schemas import UserSignupLoginSchema
 from backend.app.main import app
 
-from .fixtures import lifespan
+from .fixtures import lifespan, engine
 
 client = TestClient(app)
 
 
-
-users = [
-    UserSignupLoginSchema(
-        username="max",
-        password="123"
-    ),
-
-]
-user = UserSignupLoginSchema(
-    username="amx",
-    password="123"
-)
-
-def test_create_user(lifespan):
+def test_create_user(lifespan, engine):
     response = client.post(
         "/auth/signup",
         json={"username": "max", "password": "123"}

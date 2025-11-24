@@ -10,3 +10,8 @@ class BotEnv(Enum):
     prod = "prod"
     preprod = "preprod"
     stage = "stage"
+
+
+class LockAction(Enum):
+    acquire = "acquire"
+    release = "release"

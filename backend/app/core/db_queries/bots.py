@@ -5,8 +5,8 @@ from fastapi import Depends
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.core.db.models import Bot
-from app.core.db.session import session_provider
+from backend.app.core.db.models import Bot
+from backend.app.core.db.session import session_provider
 
 
 def get_bots_from_db(

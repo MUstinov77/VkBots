@@ -1,11 +1,8 @@
-from http.client import responses
-
-from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from app.auth.schemas import UserSignupLoginSchema
+from backend.app.api.auth.schemas import UserSignupLoginSchema
 from .fixtures import lifespan
-from app.main import app
+from backend.app.main import app
 
 client = TestClient(app)
 

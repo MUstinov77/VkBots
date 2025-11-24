@@ -1,8 +1,8 @@
 import pytest
 
 from fastapi.testclient import TestClient
-from app.core.utils.lifespan import init_db, drop_db
-from app.main import app
+from backend.app.core.utils.lifespan import init_db, drop_db, engine
+from backend.app.main import app
 
 
 
@@ -11,6 +11,7 @@ def lifespan():
     init_db()
     yield
     drop_db()
+    engine.dispose()
 
 @pytest.fixture
 def client():

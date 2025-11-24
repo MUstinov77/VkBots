@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
-from app.main import app
-from .fixtures import get_user_access_token, test_user_data, create_user, lifespan
+from backend.app.main import app
+from .fixtures import test_user_data, lifespan
 
 client = TestClient(app)
 

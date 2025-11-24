@@ -6,15 +6,15 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse
 
-from app.core.db.models import User
-from app.core.db.session import session_provider
+from backend.app.core.db.models import User
+from backend.app.core.db.session import session_provider
 
-from ..core.utils.auth import (
+from ...core.utils.auth import (
     ACCESS_TOKEN_EXPIRE_DAYS,
     authenticate_user,
     create_access_token
     )
-from ..core.utils.encrypt import get_hashed_password
+from ...core.utils.encrypt import get_hashed_password
 from .schemas import Token, UserSignupLoginSchema
 
 BASE_PREFIX = "/auth"

@@ -1,9 +1,9 @@
 from datetime import datetime
-from uuid import uuid4, UUID
+from uuid import UUID
 
 from pydantic import BaseModel
 
-from .enum import BotDomain, BotEnv
+from backend.app.api.bots.enum import BotDomain, BotEnv
 
 
 class BotRequest(BaseModel):

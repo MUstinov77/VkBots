@@ -2,8 +2,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from app.core.db.models import Base
-from app.core.db.session import engine
+from backend.app.core.db.models import Base
+from backend.app.core.db.session import engine
 
 
 def init_db():

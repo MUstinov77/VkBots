@@ -9,10 +9,10 @@ from jwt import InvalidTokenError
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.auth.schemas import TokenData
-from app.core.db.models import User
-from app.core.db.session import session_provider
-from app.core.utils.encrypt import verify_password
+from backend.app.api.auth.schemas import TokenData
+from backend.app.core.db.models import User
+from backend.app.core.db.session import session_provider
+from backend.app.core.utils.encrypt import verify_password
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 

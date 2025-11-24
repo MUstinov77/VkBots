@@ -10,7 +10,7 @@ from sqlalchemy.orm import (
     relationship
     )
 
-from app.bots.enum import BotDomain, BotEnv
+from backend.app.api.bots.enum import BotDomain, BotEnv
 
 Base = declarative_base()
 
@@ -27,7 +27,11 @@ class User(Base):
         default=datetime.now(timezone.utc)
     )
 
-    bots: Mapped[list["Bot"]] = relationship("Bot", back_populates="user")
+    bots: Mapped[list["Bot"]] = relationship(
+        "Bot",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )
 
 
 class Bot(Base):

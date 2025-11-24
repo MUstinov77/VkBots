@@ -16,5 +16,4 @@ def drop_db():
 async def lifespan(app: FastAPI):
     init_db()
     yield
-    # drop_db()
     return

@@ -1,9 +1,8 @@
-from fastapi import APIRouter,status
+from fastapi import APIRouter, status
 from fastapi.responses import Response
 
 from backend.app.api.auth.auth_router import auth_router
 from backend.app.api.bots.bots_router import bots_router
-
 
 main_router = APIRouter()
 

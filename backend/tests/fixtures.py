@@ -1,9 +1,8 @@
 import pytest
-
 from fastapi.testclient import TestClient
-from backend.app.core.utils.lifespan import init_db, drop_db, engine
-from backend.app.main import app
 
+from backend.app.core.utils.lifespan import drop_db, engine, init_db
+from backend.app.main import app
 
 
 @pytest.fixture

@@ -1,8 +1,9 @@
 from fastapi.testclient import TestClient
 
 from backend.app.api.auth.schemas import UserSignupLoginSchema
-from .fixtures import lifespan
 from backend.app.main import app
+
+from .fixtures import lifespan
 
 client = TestClient(app)
 

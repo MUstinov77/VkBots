@@ -3,16 +3,14 @@ from uuid import UUID, uuid4
 
 from sqlalchemy import TIMESTAMP, DateTime, Enum, ForeignKey, String
 from sqlalchemy.dialects.postgresql import UUID as SQLAlchemyUUID
-from sqlalchemy.orm import (
-    Mapped,
-    declarative_base,
-    mapped_column,
-    relationship
-    )
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 from backend.app.api.bots.enum import BotDomain, BotEnv
 
-Base = declarative_base()
+
+class Base(DeclarativeBase):
+    pass
+
 
 class User(Base):
 

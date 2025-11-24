@@ -1,11 +1,13 @@
 from typing import Annotated
 
 from fastapi import Depends
-from sqlalchemy import create_engine
+from sqlalchemy import Engine, create_engine
 from sqlalchemy.orm import Session
 
 engine = create_engine(
-    "postgresql+psycopg2://user:password@localhost/bots.db",
+    "postgresql+psycopg2://postgres:password@db/postgres",
+    pool_pre_ping=False,
+    pool_recycle=300
 )
 
 def create_session():
@@ -22,4 +24,3 @@ def session_provider(
         session: Annotated[Session, Depends(create_session)]
 ):
     return session
-

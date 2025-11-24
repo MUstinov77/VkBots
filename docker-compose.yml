@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:18.1
+    container_name: botsdb
+    hostname: db
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+  app:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    env_file:
+      - .env

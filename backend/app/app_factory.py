@@ -1,9 +1,10 @@
 from fastapi import FastAPI, status
-from fastapi.responses import JSONResponse
 from fastapi.requests import Request
+from fastapi.responses import JSONResponse
 
 from backend.app.api import main_router
 from backend.app.core.utils.lifespan import lifespan
+
 
 def create_app():
 

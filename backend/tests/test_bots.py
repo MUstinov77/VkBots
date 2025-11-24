@@ -1,6 +1,8 @@
 from fastapi.testclient import TestClient
+
 from backend.app.main import app
-from .fixtures import test_user_data, lifespan
+
+from .fixtures import lifespan, test_user_data
 
 client = TestClient(app)
 
